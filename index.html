@@ -5,34 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cep</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/5beb01dd07.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-   <div class="pos">
-    <div class="main">
-      <h1>consulta endereço</h1>
-     <div class="in">
-      <input type="number" id="cep" />
-      <input
-        type="button"
-        value="enviar"
-        class="conferir"
-        onclick="conferir()"
-      />
-    </div>
-      <div id="resultado">
-        
+    <div class="pos">
+      <div class="img">
+        <img src="mapo.png" alt="mapa" />
       </div>
     </div>
-  </div>
+    <div class="botoes">
+      <div class="btn-open">
+        <button>consultar</button>
+      </div>
+      <div id="teste">
+        <button>teste</button>
+      </div>
+    </div>
+
+    <div class="pop-fundo">
+      <div class="pos">
+        <div class="main" id="content">
+          <div class="btn-close">
+            <i class="fa-solid fa-xmark fa-2x"></i>
+          </div>
+          <h1>consulta endereço</h1>
+          <div class="in">
+            <input type="number" id="cep" />
+            <input
+              type="button"
+              value="enviar"
+              class="conferir"
+              onclick="conferir()"
+            />
+          </div>
+          <div id="resultado"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sociais">
+      <i class="fa-brands fa-facebook fa-2x"></i>
+      <i class="fa-brands fa-instagram fa-2x"></i>
+      <i class="fa-brands fa-linkedin fa-2x"></i>
+    </div>
     <script>
+      const btn = document.querySelector(".btn-open");
+      const modal = document.querySelector(".pop-fundo");
+      const closeBtn = document.querySelector(".btn-close");
+      const test = document.querySelector("#teste");
+
+      test.addEventListener("click", function (event) {
+        alert("ola");
+      });
+
+      btn.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", function () {
+        // document.querySelector('.pop-fundo').classList.add('.ativar')
+        modal.style.display = "none";
+      });
+
       function conferir() {
         let cep = document.querySelector("#cep").value;
 
-         if(cep.length != 8){
-           alert('CEP Invalido')
-           return
-         }
+        if (cep.length != 8) {
+          alert("CEP Invalido");
+          return;
+        }
 
         let url = `https://viacep.com.br/ws/${cep}/json/`;
         fetch(url).then(function (response) {
@@ -45,9 +90,10 @@
       function mostrarEndereco(dados) {
         let resultado = document.querySelector("#resultado");
 
-        
         if (dados.erro) {
           resultado.innerHTML = "Não foi possivel localizar o endereço";
+        } else if (dados.logradouro == 0) {
+          resultado.innerHTML = `<p>Localidade: ${dados.localidade}</p>`;
         } else {
           resultado.innerHTML = `<p> Endereço: ${dados.logradouro}</p>
                                 <p> Localidade: ${dados.localidade}</p>`;
