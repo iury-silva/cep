@@ -12,6 +12,10 @@
     ></script>
   </head>
   <body>
+    <div class="title">
+    <h1>Código de Endereçamento Postal</h1>
+  </div>
+
     <div class="pos">
       <div class="img">
         <img src="mapo.png" alt="mapa" />
@@ -64,6 +68,12 @@
 
       btn.addEventListener("click", () => {
         modal.style.display = "flex";
+
+        let cep = document.querySelector('#cep')
+        let resultado = document.querySelector("#resultado");
+        resultado.innerHTML = ' '
+        cep.value = ' '
+        
       });
 
       closeBtn.addEventListener("click", function () {
