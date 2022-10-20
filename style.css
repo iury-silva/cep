@@ -7,27 +7,23 @@
   font-family: "Roboto Condensed", sans-serif;
 }
 
-body {
-  background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
-  background-position: center;
-  background-size: cover;
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   height: 100vh;
-  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
+.video {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+
+  /* object-fit: cover; */
+  z-index: -1;
+}
+
 .title {
   position: absolute;
   width: 100%;
@@ -35,7 +31,8 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-
+  -webkit-animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   text-shadow: 3px 5px 6px black;
 }
 
@@ -53,7 +50,7 @@ body {
 }
 
 .main {
-  background-color: #d16ba5;
+  background-color: #aaaaaa;
   backdrop-filter: blur(10px);
   border-radius: 30px;
   width: 50%;
@@ -144,13 +141,16 @@ body {
   transition: 0.4s ease-in-out;
 }
 [type="button"]:hover {
-  background-color: black;
+  background-color: #c5730e;
   color: white;
 }
 
 #resultado {
   font-size: 20px;
   margin-top: 30px;
+  -webkit-animation: fade-in-left 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-left 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
 }
 h1 {
   text-transform: uppercase;
@@ -167,6 +167,8 @@ h1 {
   width: 200px;
   height: 100vh;
   margin-left: 50px;
+  -webkit-animation: fade-in-left 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-left 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 button {
   width: 100%;
@@ -185,12 +187,12 @@ button {
 }
 
 button:hover {
-  background-color: #ce3b8e;
-  transform: scale();
+  background-color: #c5730e;
+  transform: scale(1.05);
 }
 
 .img {
-  background-color: #d16ba5;
+  background-color: #ffffff;
   width: 600px;
   height: 500px;
   border-radius: 35px;
@@ -199,10 +201,12 @@ button:hover {
   cursor: pointer;
   box-shadow: 3px 3px 10px black;
   transition: 0.5s ease-in-out;
+  -webkit-animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .img:hover {
-  background-color: #ce3b8e;
+  background-color: #c5730e;
   transform: scale(1.01);
 }
 
@@ -218,14 +222,91 @@ button:hover {
   margin-right: 50px;
   z-index: 1;
   cursor: pointer;
+  -webkit-animation: fade-in-right 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-right 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .fa-brands:hover {
   transition: 0.5s ease-in-out;
   transform: scale(1.03);
-  color: #d16ba5;
+  color: #c5730e;
 }
 
 .fa-brands {
   margin-bottom: 30px;
+}
+
+@-webkit-keyframes fade-in-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
 }
