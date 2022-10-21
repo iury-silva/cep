@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cep</title>
+    <link rel="shortcut icon" href="img.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/5beb01dd07.js"
@@ -19,9 +20,9 @@
       </video>
 
 
-    <div class="title">
+    <!-- <div class="title">
     <h1>Código de Endereçamento Postal</h1>
-  </div>
+  </div> -->
 
     <div class="pos">
       <div class="img">
@@ -59,64 +60,11 @@
     </div>
 
     <div class="sociais">
-      <i class="fa-brands fa-facebook fa-2x"></i>
-      <i class="fa-brands fa-instagram fa-2x"></i>
-      <i class="fa-brands fa-linkedin fa-2x"></i>
+      <a href="https://github.com/iury-silva" target="_blank"><i class="fa-brands fa-github fa-2x"></i></a>
+      <a href="https://www.instagram.com/iury.slv/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
+      <a href="https://br.linkedin.com/in/iury-da-silva-670256234?trk=people-guest_people_search-card" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
     </div>
   </div>
-    <script>
-      const btn = document.querySelector(".btn-open");
-      const modal = document.querySelector(".pop-fundo");
-      const closeBtn = document.querySelector(".btn-close");
-      const test = document.querySelector("#teste");
-
-      test.addEventListener("click", function (event) {
-        alert("ola");
-      });
-
-      btn.addEventListener("click", () => {
-        modal.style.display = "flex";
-
-        let cep = document.querySelector('#cep')
-        let resultado = document.querySelector("#resultado");
-        resultado.innerHTML = ' '
-        cep.value = ' '
-        
-      });
-
-      closeBtn.addEventListener("click", function () {
-        // document.querySelector('.pop-fundo').classList.add('.ativar')
-        modal.style.display = "none";
-      });
-
-      function conferir() {
-        let cep = document.querySelector("#cep").value;
-
-        if (cep.length != 8) {
-          alert("CEP Invalido");
-          return;
-        }
-
-        let url = `https://viacep.com.br/ws/${cep}/json/`;
-        fetch(url).then(function (response) {
-          response.json().then(function (data) {
-            console.log(data);
-            mostrarEndereco(data);
-          });
-        });
-      }
-      function mostrarEndereco(dados) {
-        let resultado = document.querySelector("#resultado");
-
-        if (dados.erro) {
-          resultado.innerHTML = "Não foi possivel localizar o endereço";
-        } else if (dados.logradouro == 0) {
-          resultado.innerHTML = `<p>Localidade: ${dados.localidade}</p>`;
-        } else {
-          resultado.innerHTML = `<p> Endereço: ${dados.logradouro}</p>
-                                <p> Localidade: ${dados.localidade}</p>`;
-        }
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

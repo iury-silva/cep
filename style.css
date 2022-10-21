@@ -30,7 +30,7 @@
   color: white;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
   -webkit-animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: fade-in-top 0.9s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   text-shadow: 3px 5px 6px black;
@@ -259,6 +259,11 @@ button:hover {
 
 .fa-brands {
   margin-bottom: 30px;
+  
+
+}
+a{
+  color: white;
 }
 
 @-webkit-keyframes fade-in-left {
